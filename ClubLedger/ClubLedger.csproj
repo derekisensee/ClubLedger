@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateOverview.Designer.cs">
+      <DependentUpon>DateOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="LedgerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,8 +66,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="LedgerForm.resx">
-      <DependentUpon>LedgerForm.cs</DependentUpon>
+    <EmbeddedResource Include="DateOverview.resx">
+      <DependentUpon>DateOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

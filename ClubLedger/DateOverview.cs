@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ClubLedger
+{
+    public partial class DateOverview : Form
+    {
+        public DateOverview(string date)
+        {
+            InitializeComponent();
+            label1.Text = date;
+        }
+
+        public DateOverview(string startDate, string endDate)
+        {
+
+        }
+    }
+}
