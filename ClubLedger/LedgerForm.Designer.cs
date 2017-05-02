@@ -1,6 +1,6 @@
 ﻿namespace ClubLedger
 {
-    partial class Form1
+    partial class LedgerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // LedgerForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(441, 314);
+            this.Name = "LedgerForm";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
