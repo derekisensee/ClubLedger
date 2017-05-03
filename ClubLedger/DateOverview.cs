@@ -12,15 +12,10 @@ namespace ClubLedger
 {
     public partial class DateOverview : Form
     {
-        public DateOverview(string date)
-        {
-            InitializeComponent();
-            label1.Text = date;
-        }
-
         public DateOverview(string startDate, string endDate)
         {
-
+            InitializeComponent();
+            label1.Text = startDate + " " + endDate;
         }
     }
 }

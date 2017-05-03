@@ -12,16 +12,19 @@ namespace ClubLedger
 {
     public partial class MainForm : Form
     {
-        private string singleSelectedDate;
+        private string selectedStartDate;
+        private string selectedEndDate;
+
         public MainForm()
         {
             InitializeComponent();
-            singleSelectedDate = monthCalendar1.SelectionStart.ToShortDateString();
+            selectedStartDate = monthCalendar1.SelectionStart.ToShortDateString();
+            selectedEndDate = monthCalendar1.SelectionStart.ToShortDateString();
         }
 
         private void LedgerButton_Click(object sender, EventArgs e)
         {
-            DateOverview LF = new DateOverview(singleSelectedDate);
+            DateOverview LF = new DateOverview(selectedStartDate, selectedEndDate);
             LF.Show();
         }
 
@@ -33,10 +36,10 @@ namespace ClubLedger
 
             startDate = splitDate[2];
             string endDate = splitDate[6];
-            if (startDate.Equals(endDate))
-            {
-                singleSelectedDate = startDate;
-            }
+            selectedStartDate = startDate;
+            selectedEndDate = endDate;
+            selectedStartDate = selectedStartDate.Replace("/", "-");
+            selectedEndDate = selectedEndDate.Replace("/", "-");
         }
 
         private void LedgerButton_Click_1(object sender, EventArgs e)
