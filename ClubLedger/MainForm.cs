@@ -38,8 +38,11 @@ namespace ClubLedger
             string endDate = splitDate[6];
             selectedStartDate = startDate;
             selectedEndDate = endDate;
-            selectedStartDate = selectedStartDate.Replace("/", "-");
-            selectedEndDate = selectedEndDate.Replace("/", "-");
+
+            string[] splittedStartDate = selectedStartDate.Split('/');
+            string[] splittedEndDate = selectedEndDate.Split('/');
+            selectedStartDate = splittedStartDate[2] + "-" + splittedStartDate[0] + "-" + splittedStartDate[1];
+            selectedEndDate = splittedEndDate[2] + "-" + splittedEndDate[0] + "-" + splittedEndDate[1];
         }
 
         private void LedgerButton_Click_1(object sender, EventArgs e)

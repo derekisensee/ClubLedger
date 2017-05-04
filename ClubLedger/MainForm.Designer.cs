@@ -70,7 +70,7 @@
             this.Controls.Add(this.DateOverviewButton);
             this.Controls.Add(this.monthCalendar1);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = " ";
             this.ResumeLayout(false);
 
         }
