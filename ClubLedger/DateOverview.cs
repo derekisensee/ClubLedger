@@ -17,8 +17,10 @@ namespace ClubLedger
 
         public DateOverview(string startDate, string endDate)
         {
+            SQLiteConnection c = new SQLiteConnection("Data Source=/ledger");
             InitializeComponent();
             label1.Text = startDate + " " + endDate;
+            label1.Text += c.ToString();
         }
     }
 }
