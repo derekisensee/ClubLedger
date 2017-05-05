@@ -28,23 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.headers = new System.Windows.Forms.Label();
+            this.data = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // headers
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 0;
+            this.headers.AutoSize = true;
+            this.headers.Location = new System.Drawing.Point(12, 9);
+            this.headers.Name = "headers";
+            this.headers.Size = new System.Drawing.Size(20, 13);
+            this.headers.TabIndex = 0;
+            this.headers.Text = "TYPE   DATE    SPENT   EARNED  NOTES";
+            // 
+            // data
+            // 
+            this.data.AutoSize = true;
+            this.data.Location = new System.Drawing.Point(12, 22);
+            this.data.Name = "data";
+            this.data.Size = new System.Drawing.Size(87, 13);
+            this.data.TabIndex = 1;
+            this.data.Text = "data goes here!!!";
             // 
             // DateOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 314);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.data);
+            this.Controls.Add(this.headers);
             this.Name = "DateOverview";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -54,6 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label headers;
+        private System.Windows.Forms.Label data;
     }
 }

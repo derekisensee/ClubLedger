@@ -20,24 +20,39 @@ namespace ClubLedger
             SQLiteConnection c = new SQLiteConnection("Data Source=ledger");
             c.Open();
             InitializeComponent();
+
+            data.Text = "";
             try
             {
-                SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions", c);
-                SQLiteDataReader r = com.ExecuteReader();
-
-                InitializeComponent();
-                while (r.Read())
+                if (startDate.Equals(endDate))
                 {
-                    label1.Text += r["type"].ToString();
+                    SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions WHERE date ='" + startDate + "'", c);
+                    SQLiteDataReader r = com.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        data.Text += r["type"].ToString();
+                        data.Text += r["date"].ToString();
+                        data.Text += "-" + r["spent"].ToString();
+                        data.Text += "+" + r["earned"].ToString();
+                        data.Text += r["notes"].ToString();
+                    }
+                }
+                else
+                {
+                    SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions WHERE date >='" + startDate + "' AND date <= '" + endDate + "'", c);
+                    SQLiteDataReader r = com.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        headers.Text += r["type"].ToString();
+                    }
                 }
             }
             catch (Exception e)
             {
-                label1.Text = "ERROR!!!!!!!!" + e.ToString();
+                headers.Text = "ERROR!!!!!!!!" + e.ToString();
             }
-
-            //label1.Text = startDate + " " + endDate;
-            //label1.Text += c.ToString();
         }
     }
 }
