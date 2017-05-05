@@ -17,10 +17,27 @@ namespace ClubLedger
 
         public DateOverview(string startDate, string endDate)
         {
-            SQLiteConnection c = new SQLiteConnection("Data Source=/ledger");
+            SQLiteConnection c = new SQLiteConnection("Data Source=ledger");
+            c.Open();
             InitializeComponent();
-            label1.Text = startDate + " " + endDate;
-            label1.Text += c.ToString();
+            try
+            {
+                SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions", c);
+                SQLiteDataReader r = com.ExecuteReader();
+
+                InitializeComponent();
+                while (r.Read())
+                {
+                    label1.Text += r["type"].ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                label1.Text = "ERROR!!!!!!!!" + e.ToString();
+            }
+
+            //label1.Text = startDate + " " + endDate;
+            //label1.Text += c.ToString();
         }
     }
 }
