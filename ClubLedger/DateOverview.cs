@@ -32,7 +32,8 @@ namespace ClubLedger
                     while (r.Read())
                     {
                         data.Text += r["type"].ToString();
-                        data.Text += r["date"].ToString();
+                        DateTime day = (DateTime)r["date"];
+                        data.Text += day.ToShortDateString();
                         data.Text += "-" + r["spent"].ToString();
                         data.Text += "+" + r["earned"].ToString();
                         data.Text += r["notes"].ToString();
@@ -49,7 +50,7 @@ namespace ClubLedger
                     }
                 }
             }
-            catch (Exception e)
+            catch (SQLiteException e)
             {
                 headers.Text = "ERROR!!!!!!!!" + e.ToString();
             }
