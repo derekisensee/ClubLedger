@@ -21,7 +21,9 @@ namespace ClubLedger
             c.Open();
             InitializeComponent();
 
-            data.Text = "";
+            //DateTime d = DateTime.ParseExact(startDate, "MM/dd/yyyy", null);
+            //data.Text = d.ToLongDateString();
+            data.Text = startDate;
             try
             {
                 if (startDate.Equals(endDate))

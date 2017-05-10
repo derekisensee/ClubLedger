@@ -41,8 +41,41 @@ namespace ClubLedger
 
             string[] splittedStartDate = selectedStartDate.Split('/');
             string[] splittedEndDate = selectedEndDate.Split('/');
-            selectedStartDate = splittedStartDate[2] + "-" + splittedStartDate[0] + "-" + splittedStartDate[1];
-            selectedEndDate = splittedEndDate[2] + "-" + splittedEndDate[0] + "-" + splittedEndDate[1];
+            //HACK: Multiple dirty if-statements
+            if (splittedStartDate[0].Length == 1 && splittedStartDate[1].Length == 1)
+            {
+                selectedStartDate = splittedStartDate[2] + "-" + "0" + splittedStartDate[0] + "-" + "0" + splittedStartDate[1];
+            }
+            else if (splittedStartDate[0].Length == 1)
+            {
+                selectedStartDate = splittedStartDate[2] + "-" + "0" + splittedStartDate[0] + "-" + splittedStartDate[1];
+            }
+            else if (splittedStartDate[1].Length == 1)
+            {
+                selectedStartDate = "0" + splittedStartDate[2] + "-" + splittedStartDate[0] + "-" + splittedStartDate[1];
+            }
+            else
+            {
+                selectedStartDate = splittedStartDate[2] + "-" + splittedStartDate[0] + "-" + splittedStartDate[1];
+            }
+
+            if (splittedEndDate[0].Length == 1 && splittedEndDate[1].Length == 1)
+            {
+                selectedEndDate = splittedEndDate[2] + "-" + "0" + splittedEndDate[0] + "-" + "0" + splittedEndDate[1];
+            }
+            else if (splittedEndDate[0].Length == 1)
+            {
+                selectedEndDate = splittedEndDate[2] + "-" + "0" + splittedEndDate[0] + "-" + splittedEndDate[1];
+            }
+            else if (splittedEndDate[1].Length == 1)
+            {
+                selectedEndDate = splittedEndDate[2] + "-" + splittedEndDate[0] + "-" + "0" + splittedEndDate[1];
+            }
+            else
+            {
+                selectedEndDate = splittedEndDate[2] + "-" + splittedEndDate[0] + "-" + splittedEndDate[1];
+            }
+            // end dirty hack
         }
 
         private void LedgerButton_Click_1(object sender, EventArgs e)
