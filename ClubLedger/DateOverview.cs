@@ -32,8 +32,7 @@ namespace ClubLedger
                     while (r.Read())
                     {
                         data.Text += r["type"].ToString();
-                        DateTime day = (DateTime)r["date"];
-                        data.Text += day.ToShortDateString();
+                        data.Text += r["date"].ToString();
                         data.Text += "-" + r["spent"].ToString();
                         data.Text += "+" + r["earned"].ToString();
                         data.Text += r["notes"].ToString();
