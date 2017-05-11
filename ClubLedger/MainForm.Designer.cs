@@ -31,11 +31,12 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.DateOverviewButton = new System.Windows.Forms.Button();
             this.LedgerButton = new System.Windows.Forms.Button();
+            this.newEventButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(375, 131);
+            this.monthCalendar1.Location = new System.Drawing.Point(369, 18);
             this.monthCalendar1.MaxSelectionCount = 365;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
@@ -43,7 +44,7 @@
             // 
             // DateOverviewButton
             // 
-            this.DateOverviewButton.Location = new System.Drawing.Point(375, 305);
+            this.DateOverviewButton.Location = new System.Drawing.Point(369, 192);
             this.DateOverviewButton.Name = "DateOverviewButton";
             this.DateOverviewButton.Size = new System.Drawing.Size(227, 23);
             this.DateOverviewButton.TabIndex = 1;
@@ -61,11 +62,22 @@
             this.LedgerButton.UseVisualStyleBackColor = true;
             this.LedgerButton.Click += new System.EventHandler(this.LedgerButton_Click_1);
             // 
+            // newEventButton
+            // 
+            this.newEventButton.Location = new System.Drawing.Point(369, 221);
+            this.newEventButton.Name = "newEventButton";
+            this.newEventButton.Size = new System.Drawing.Size(227, 23);
+            this.newEventButton.TabIndex = 3;
+            this.newEventButton.Text = "Enter New Thing";
+            this.newEventButton.UseVisualStyleBackColor = true;
+            this.newEventButton.Click += new System.EventHandler(this.newEventButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 340);
+            this.Controls.Add(this.newEventButton);
             this.Controls.Add(this.LedgerButton);
             this.Controls.Add(this.DateOverviewButton);
             this.Controls.Add(this.monthCalendar1);
@@ -80,6 +92,7 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button DateOverviewButton;
         private System.Windows.Forms.Button LedgerButton;
+        private System.Windows.Forms.Button newEventButton;
     }
 }
 

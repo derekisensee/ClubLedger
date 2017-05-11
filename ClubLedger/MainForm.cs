@@ -83,5 +83,11 @@ namespace ClubLedger
             LedgerForm LF = new LedgerForm();
             LF.Show();
         }
+
+        private void newEventButton_Click(object sender, EventArgs e)
+        {
+            NewEntryForm EF = new NewEntryForm();
+            EF.Show();
+        }
     }
 }

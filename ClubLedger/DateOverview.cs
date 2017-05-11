@@ -47,7 +47,11 @@ namespace ClubLedger
 
                     while (r.Read())
                     {
-                        headers.Text += r["type"].ToString();
+                        data.Text += r["type"].ToString();
+                        data.Text += r["date"].ToString();
+                        data.Text += "-" + r["spent"].ToString();
+                        data.Text += "+" + r["earned"].ToString();
+                        data.Text += r["notes"].ToString();
                     }
                 }
             }
