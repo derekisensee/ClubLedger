@@ -20,6 +20,7 @@ namespace ClubLedger
             InitializeComponent();
             selectedStartDate = monthCalendar1.SelectionStart.ToShortDateString();
             selectedEndDate = monthCalendar1.SelectionStart.ToShortDateString();
+            //monthCalendar1.BoldedDates = { }
         }
 
         private void LedgerButton_Click(object sender, EventArgs e)
