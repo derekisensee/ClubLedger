@@ -64,12 +64,26 @@ namespace ClubLedger
             earnedLabel.Text = selectedStartDate;
 
             SQLiteCommand insert = new SQLiteCommand("INSERT INTO transactions (type, startDate, endDate, spent, earned, notes) VALUES (?, ?, ?, ?, ?, ?)");
-            insert.Parameters.Add(typeComboBox.Text); // System.InvalidCastException: 'Unable to cast object of type 'System.String' to type 'System.Data.SQLite.SQLiteParameter'.'
-            insert.Parameters.Add(selectedStartDate);
-            insert.Parameters.Add(selectedEndDate);
-            insert.Parameters.Add(spentUpDown.Value);
-            insert.Parameters.Add(earnedUpDown.Value);
-            insert.Parameters.Add(notesTextBox.Text);
+
+            insert.Connection = new SQLiteConnection("Data Source=ledger");
+            insert.Connection.Open();
+
+            SQLiteParameter type = new SQLiteParameter("@type", SqlDbType.Text) { Value = typeComboBox.Text };
+            SQLiteParameter startDate = new SQLiteParameter("@startDate", SqlDbType.Date) { Value = selectedStartDate };
+            SQLiteParameter endDate = new SQLiteParameter("@endDate", SqlDbType.Date) { Value = selectedEndDate };
+            SQLiteParameter spent = new SQLiteParameter("@spent", SqlDbType.Money) { Value = spentUpDown.Value };
+            SQLiteParameter earned = new SQLiteParameter("@earned", SqlDbType.Money) { Value = earnedUpDown.Value };
+            SQLiteParameter notes = new SQLiteParameter("@notes", SqlDbType.Text) { Value = notesTextBox.Text };
+
+
+            insert.Parameters.Add(type);
+            insert.Parameters.Add(startDate);
+            insert.Parameters.Add(endDate);
+            insert.Parameters.Add(spent);
+            insert.Parameters.Add(earned);
+            insert.Parameters.Add(notes);
+
+            insert.ExecuteNonQuery();
         }
 
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)

@@ -135,6 +135,11 @@
             // 
             this.spentUpDown.DecimalPlaces = 2;
             this.spentUpDown.Location = new System.Drawing.Point(50, 37);
+            this.spentUpDown.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
             this.spentUpDown.Name = "spentUpDown";
             this.spentUpDown.Size = new System.Drawing.Size(358, 20);
             this.spentUpDown.TabIndex = 9;
@@ -144,6 +149,11 @@
             // 
             this.earnedUpDown.DecimalPlaces = 2;
             this.earnedUpDown.Location = new System.Drawing.Point(50, 63);
+            this.earnedUpDown.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
             this.earnedUpDown.Name = "earnedUpDown";
             this.earnedUpDown.Size = new System.Drawing.Size(357, 20);
             this.earnedUpDown.TabIndex = 10;
