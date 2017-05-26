@@ -64,24 +64,24 @@ namespace ClubLedger
             earnedLabel.Text = selectedStartDate;
 
             SQLiteCommand insert = new SQLiteCommand("INSERT INTO transactions (type, startDate, endDate, spent, earned, notes) VALUES (?, ?, ?, ?, ?, ?)");
+            //SQLiteCommand insert = new SQLiteCommand("INSERT INTO transactions (type) VALUES (?)");
 
             insert.Connection = new SQLiteConnection("Data Source=ledger");
             insert.Connection.Open();
 
-            SQLiteParameter type = new SQLiteParameter("@type", SqlDbType.Text) { Value = typeComboBox.Text };
-            SQLiteParameter startDate = new SQLiteParameter("@startDate", SqlDbType.Date) { Value = selectedStartDate };
-            SQLiteParameter endDate = new SQLiteParameter("@endDate", SqlDbType.Date) { Value = selectedEndDate };
-            SQLiteParameter spent = new SQLiteParameter("@spent", SqlDbType.Money) { Value = spentUpDown.Value };
-            SQLiteParameter earned = new SQLiteParameter("@earned", SqlDbType.Money) { Value = earnedUpDown.Value };
-            SQLiteParameter notes = new SQLiteParameter("@notes", SqlDbType.Text) { Value = notesTextBox.Text };
-
-
-            insert.Parameters.Add(type);
-            insert.Parameters.Add(startDate);
-            insert.Parameters.Add(endDate);
-            insert.Parameters.Add(spent);
-            insert.Parameters.Add(earned);
-            insert.Parameters.Add(notes);
+            //SQLiteParameter type = new SQLiteParameter("@type", SqlDbType.Text) { Value = typeComboBox.Text };
+            //SQLiteParameter startDate = new SQLiteParameter("@startDate", SqlDbType.Date) { Value = selectedStartDate };
+            //SQLiteParameter endDate = new SQLiteParameter("@endDate", SqlDbType.Date) { Value = selectedEndDate };
+            //SQLiteParameter spent = new SQLiteParameter("@spent", SqlDbType.Money) { Value = spentUpDown.Value };
+            //SQLiteParameter earned = new SQLiteParameter("@earned", SqlDbType.Money) { Value = earnedUpDown.Value };
+            //SQLiteParameter notes = new SQLiteParameter("@notes", SqlDbType.Text) { Value = notesTextBox.Text };
+            
+            insert.Parameters.AddWithValue("type", typeComboBox.Text);
+            insert.Parameters.AddWithValue("startDate", selectedStartDate);
+            insert.Parameters.AddWithValue("endDate", selectedEndDate);
+            insert.Parameters.AddWithValue("spent", spentUpDown.Value);
+            insert.Parameters.AddWithValue("earned", earnedUpDown.Value);
+            insert.Parameters.AddWithValue("notes", notesTextBox.Text);
 
             insert.ExecuteNonQuery();
         }

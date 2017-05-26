@@ -13,7 +13,6 @@ namespace ClubLedger
 {
     public partial class DateOverview : Form
     {
-        private string insertTransactions = "INSERT INTO transaction(type, date, spent, earned, notes) VALUES (?, ?, ?, ?, ?)";
 
         public DateOverview(string startDate, string endDate)
         {
