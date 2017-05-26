@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace ClubLedger
 {
@@ -20,7 +21,16 @@ namespace ClubLedger
             InitializeComponent();
             selectedStartDate = monthCalendar1.SelectionStart.ToShortDateString();
             selectedEndDate = monthCalendar1.SelectionStart.ToShortDateString();
-            //monthCalendar1.BoldedDates = { }
+            SQLiteConnection c = new SQLiteConnection("Data Source=ledger");
+            c.Open();
+            SQLiteCommand com = new SQLiteCommand("SELECT startDate, endDate FROM transactions WHERE startDate != \"\"", c);
+            SQLiteDataReader r = com.ExecuteReader();
+
+            while (r.Read())
+            {
+                string[] split = r["startDate"].ToString().Split('/');
+                monthCalendar1.AddBoldedDate(new DateTime(Int32.Parse(split[2].Split(' ')[0]), Int32.Parse(split[0]), Int32.Parse(split[1])));
+            }
         }
 
         private void LedgerButton_Click(object sender, EventArgs e)
@@ -42,7 +52,7 @@ namespace ClubLedger
 
             string[] splittedStartDate = selectedStartDate.Split('/');
             string[] splittedEndDate = selectedEndDate.Split('/');
-            //HACK: Multiple dirty if-statements
+            //HACK: Multiple dirty if-statements. Check if there's an easier way to format dates here.
             if (splittedStartDate[0].Length == 1 && splittedStartDate[1].Length == 1)
             {
                 selectedStartDate = splittedStartDate[2] + "-" + "0" + splittedStartDate[0] + "-" + "0" + splittedStartDate[1];

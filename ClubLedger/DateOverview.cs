@@ -27,30 +27,34 @@ namespace ClubLedger
             {
                 if (startDate.Equals(endDate))
                 {
-                    SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions WHERE date ='" + startDate + "'", c);
+                    SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions WHERE startDate ='" + startDate + "'", c);
                     SQLiteDataReader r = com.ExecuteReader();
 
                     while (r.Read())
                     {
                         data.Text += r["type"].ToString();
-                        data.Text += r["date"].ToString();
+                        data.Text += r["startDate"].ToString();
+                        data.Text += r["endDate"].ToString();
                         data.Text += "-" + r["spent"].ToString();
                         data.Text += "+" + r["earned"].ToString();
                         data.Text += r["notes"].ToString();
+                        data.Text += "\n";
                     }
                 }
                 else
                 {
-                    SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions WHERE date >='" + startDate + "' AND date <= '" + endDate + "'", c);
+                    SQLiteCommand com = new SQLiteCommand("SELECT * FROM transactions WHERE startDate >='" + startDate + "' AND endDate <= '" + endDate + "'", c);
                     SQLiteDataReader r = com.ExecuteReader();
 
                     while (r.Read())
                     {
                         data.Text += r["type"].ToString();
-                        data.Text += r["date"].ToString();
+                        data.Text += r["startDate"].ToString();
+                        data.Text += r["endDate"].ToString();
                         data.Text += "-" + r["spent"].ToString();
                         data.Text += "+" + r["earned"].ToString();
                         data.Text += r["notes"].ToString();
+                        data.Text += "\n";
                     }
                 }
             }

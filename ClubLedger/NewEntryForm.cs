@@ -61,8 +61,6 @@ namespace ClubLedger
             }
             // end dirty hack
 
-            earnedLabel.Text = selectedStartDate;
-
             SQLiteCommand insert = new SQLiteCommand("INSERT INTO transactions (type, startDate, endDate, spent, earned, notes) VALUES (?, ?, ?, ?, ?, ?)");
             //SQLiteCommand insert = new SQLiteCommand("INSERT INTO transactions (type) VALUES (?)");
 
