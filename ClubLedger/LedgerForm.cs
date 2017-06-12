@@ -43,11 +43,28 @@ namespace ClubLedger
 
         private void LedgerForm_Load(object sender, EventArgs e)
         {
-            mainChart.Series["Earned"].Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Ascending, "X");
+            //mainChart.Series["Earned"].Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Ascending, "X");
             for (int i = 0; i < earned.Count; i++)
             {
                 mainChart.Series["Earned"].Points.Add(double.Parse(earned[i].ToString()));
+                mainChart.Series["Lost"].Points.Add(double.Parse(lost[i].ToString()));
+                mainChart.Series["Net"].Points.Add(double.Parse(net[i].ToString()));
             }
+        }
+
+        private void toggleEarned_Click(object sender, EventArgs e)
+        {
+            mainChart.Series["Earned"].Enabled = !mainChart.Series["Earned"].Enabled;
+        }
+
+        private void toggleLost_Click(object sender, EventArgs e)
+        {
+            mainChart.Series["Lost"].Enabled = !mainChart.Series["Lost"].Enabled;
+        }
+
+        private void toggleNet_Click(object sender, EventArgs e)
+        {
+            mainChart.Series["Net"].Enabled = !mainChart.Series["Net"].Enabled;
         }
     }
 }
