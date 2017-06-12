@@ -13,6 +13,8 @@ namespace ClubLedger
 {
     public partial class NewEntryForm : Form
     {
+        public MainForm f;
+
         public NewEntryForm()
         {
             InitializeComponent();
@@ -66,13 +68,6 @@ namespace ClubLedger
 
             insert.Connection = new SQLiteConnection("Data Source=ledger");
             insert.Connection.Open();
-
-            //SQLiteParameter type = new SQLiteParameter("@type", SqlDbType.Text) { Value = typeComboBox.Text };
-            //SQLiteParameter startDate = new SQLiteParameter("@startDate", SqlDbType.Date) { Value = selectedStartDate };
-            //SQLiteParameter endDate = new SQLiteParameter("@endDate", SqlDbType.Date) { Value = selectedEndDate };
-            //SQLiteParameter spent = new SQLiteParameter("@spent", SqlDbType.Money) { Value = spentUpDown.Value };
-            //SQLiteParameter earned = new SQLiteParameter("@earned", SqlDbType.Money) { Value = earnedUpDown.Value };
-            //SQLiteParameter notes = new SQLiteParameter("@notes", SqlDbType.Text) { Value = notesTextBox.Text };
             
             insert.Parameters.AddWithValue("type", typeComboBox.Text);
             insert.Parameters.AddWithValue("startDate", selectedStartDate);
@@ -82,6 +77,7 @@ namespace ClubLedger
             insert.Parameters.AddWithValue("notes", notesTextBox.Text);
 
             insert.ExecuteNonQuery();
+            f.RefreshBoldDates();
         }
 
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)

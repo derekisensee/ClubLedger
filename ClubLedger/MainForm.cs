@@ -21,16 +21,21 @@ namespace ClubLedger
             InitializeComponent();
             selectedStartDate = monthCalendar1.SelectionStart.ToShortDateString();
             selectedEndDate = monthCalendar1.SelectionStart.ToShortDateString();
+            RefreshBoldDates();
+        }
+
+        public void RefreshBoldDates()
+        {
             SQLiteConnection c = new SQLiteConnection("Data Source=ledger");
             c.Open();
             SQLiteCommand com = new SQLiteCommand("SELECT startDate, endDate FROM transactions WHERE startDate != \"\"", c);
             SQLiteDataReader r = com.ExecuteReader();
-
             while (r.Read())
             {
                 string[] split = r["startDate"].ToString().Split('/');
                 monthCalendar1.AddBoldedDate(new DateTime(Int32.Parse(split[2].Split(' ')[0]), Int32.Parse(split[0]), Int32.Parse(split[1])));
             }
+            this.Refresh();
         }
 
         private void LedgerButton_Click(object sender, EventArgs e)
@@ -98,6 +103,7 @@ namespace ClubLedger
         private void newEventButton_Click(object sender, EventArgs e)
         {
             NewEntryForm EF = new NewEntryForm();
+            EF.f = this;
             EF.Show();
         }
     }
