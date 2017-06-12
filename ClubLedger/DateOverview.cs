@@ -22,7 +22,6 @@ namespace ClubLedger
 
             //DateTime d = DateTime.ParseExact(startDate, "MM/dd/yyyy", null);
             //data.Text = d.ToLongDateString();
-            data.Text = startDate;
             try
             {
                 if (startDate.Equals(endDate))
@@ -32,13 +31,7 @@ namespace ClubLedger
 
                     while (r.Read())
                     {
-                        data.Text += r["type"].ToString();
-                        data.Text += r["startDate"].ToString();
-                        data.Text += r["endDate"].ToString();
-                        data.Text += "-" + r["spent"].ToString();
-                        data.Text += "+" + r["earned"].ToString();
-                        data.Text += r["notes"].ToString();
-                        data.Text += "\n";
+                        dataGridView.Rows.Add(r["type"].ToString(), r["startDate"].ToString(), r["endDate"].ToString(), r["earned"].ToString(), r["spent"].ToString(), r["notes"].ToString());
                     }
                 }
                 else
@@ -48,19 +41,13 @@ namespace ClubLedger
 
                     while (r.Read())
                     {
-                        data.Text += r["type"].ToString();
-                        data.Text += r["startDate"].ToString();
-                        data.Text += r["endDate"].ToString();
-                        data.Text += "-" + r["spent"].ToString();
-                        data.Text += "+" + r["earned"].ToString();
-                        data.Text += r["notes"].ToString();
-                        data.Text += "\n";
+                        dataGridView.Rows.Add(r["type"].ToString(), r["startDate"].ToString(), r["endDate"].ToString(), r["earned"].ToString(), r["spent"].ToString(), r["notes"].ToString());
                     }
                 }
             }
             catch (SQLiteException e)
             {
-                headers.Text = "ERROR!!!!!!!!" + e.ToString();
+                //headers.Text = "ERROR!!!!!!!!" + e.ToString(); TODO: Fix dis sick error handling filth
             }
         }
     }
